@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/806d3ac0-e470-464b-bbc2-e646adb40092)
+
 # Project Title
 
 Parameter Identification with MuJoCo Simulations
