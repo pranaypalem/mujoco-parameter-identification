@@ -68,7 +68,7 @@ To use this repository, ensure the following tools are installed:
 1. **Install Tracker Software** and analyze your video to generate CSV data.
 2. **Clone this Repository**:
    ```bash
-   git clone https://github.com/yourusername/repository-name.git
+   git clone https://github.com/pranaypalem/mujoco-parameter-identification.git
    ```
 3. **Run Simulations**: Use the provided scripts to generate MuJoCo data.
 4. **Optimize Parameters**: Use the optimization scripts to refine stiffness and damping values.
