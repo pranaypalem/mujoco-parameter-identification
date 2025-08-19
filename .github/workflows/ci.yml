@@ -32,7 +32,7 @@ jobs:
     - name: Install system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y libgl1-mesa-dev libglfw3-dev libglew-dev libosmesa6-dev xvfb
+        sudo apt-get install -y libgl1-mesa-dev libglfw3-dev libglew-dev libosmesa6-dev xvfb ffmpeg
     
     - name: Install Python dependencies
       run: |
