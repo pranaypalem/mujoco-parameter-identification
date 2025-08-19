@@ -1,5 +1,7 @@
 # MuJoCo Parameter Identification
 
+[![CI](https://github.com/pranaypalem/mujoco-parameter-identification/actions/workflows/ci.yml/badge.svg)](https://github.com/pranaypalem/mujoco-parameter-identification/actions/workflows/ci.yml)
+
 **Parameter identification for material properties using MuJoCo simulations and optimization techniques.**
 
 This project identifies stiffness and damping characteristics of cardstock material by comparing real-world oscillation data with MuJoCo physics simulations, using scipy optimization to minimize the difference between experimental and simulated results.
