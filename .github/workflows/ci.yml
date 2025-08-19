@@ -29,7 +29,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements-dev.txt
+        pip install -r requirements.txt
     
     - name: Lint with flake8
       run: |
@@ -51,15 +51,7 @@ jobs:
       run: |
         export CI=true
         export DISPLAY=:99
-        xvfb-run -a make test-coverage
-    
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        file: ./coverage.xml
-        flags: unittests
-        name: codecov-umbrella
-        fail_ci_if_error: true
+        xvfb-run -a make test
 
   build:
     runs-on: ubuntu-latest

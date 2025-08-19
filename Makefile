@@ -22,7 +22,7 @@ install:
 # Development installation
 .PHONY: install-dev
 install-dev:
-	$(PIP) install -r requirements-dev.txt
+	$(PIP) install -r requirements.txt
 
 # Code formatting
 .PHONY: format
@@ -100,7 +100,7 @@ quality: lint typecheck test
 help:
 	@echo "Available targets:"
 	@echo "  install       - Install project dependencies"
-	@echo "  install-dev   - Install development dependencies"
+	@echo "  install-dev   - Install all dependencies"
 	@echo "  format        - Format code with black and isort"
 	@echo "  lint          - Run linting with flake8 and pylint"
 	@echo "  typecheck     - Run type checking with mypy"
