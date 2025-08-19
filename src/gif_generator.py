@@ -141,9 +141,9 @@ def run_simulation_and_generate_gif(
     print(f"Simulation complete. Captured {len(frames)} frames.")
 
     # Generate animation file
-    if filename.endswith('.gif'):
+    if filename.endswith(".gif"):
         # For GIF, create MP4 first then convert
-        mp4_path = output_path / filename.replace('.gif', '.mp4')
+        mp4_path = output_path / filename.replace(".gif", ".mp4")
         gif_path = output_path / filename
 
         print(f"Creating MP4: {mp4_path}")
@@ -151,11 +151,21 @@ def run_simulation_and_generate_gif(
 
         print(f"Converting to GIF: {gif_path}")
         import subprocess
+
         try:
-            subprocess.run([
-                'ffmpeg', '-i', str(mp4_path), '-vf',
-                'fps=10,scale=320:-1:flags=lanczos', '-y', str(gif_path)
-            ], check=True, capture_output=True)
+            subprocess.run(
+                [
+                    "ffmpeg",
+                    "-i",
+                    str(mp4_path),
+                    "-vf",
+                    "fps=10,scale=320:-1:flags=lanczos",
+                    "-y",
+                    str(gif_path),
+                ],
+                check=True,
+                capture_output=True,
+            )
 
             print(f"GIF generated successfully: {gif_path}")
             return gif_path
