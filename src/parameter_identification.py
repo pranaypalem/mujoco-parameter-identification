@@ -74,7 +74,7 @@ class ParameterIdentification:
         """
         xy = np.array([x, y]).T
         f = si.interp1d(t, xy.T, fill_value="extrapolate", kind="quadratic")
-        new_t = np.r_[0 : t[-1] : time_step]
+        new_t = np.arange(0, t[-1], time_step)
         new_t = new_t[1:]  # removing timestep = 0
 
         # Create 3D array with y as z-coordinate for MuJoCo
@@ -249,7 +249,7 @@ class ParameterIdentification:
                 z_sim = z_sim - diff
 
         mse = np.mean((z_sim - z_exp) ** 2)
-        return mse
+        return float(mse)
 
     def optimize_parameters(
         self,

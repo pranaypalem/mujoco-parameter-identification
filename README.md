@@ -88,46 +88,32 @@ The project demonstrated:
 ├── media/                   # Generated media files (GIFs, videos)
 ├── results/                 # Analysis results
 ├── Makefile                 # Build and test automation
-└── requirements.txt         # Python dependencies
+├── requirements.txt         # Python dependencies
+└── pyproject.toml          # Project configuration
 ```
 
 ## Quick Start
 
-### Local Development Setup
-
-1. **Clone this repository**:
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/pranaypalem/mujoco-parameter-identification.git
    cd mujoco-parameter-identification
    ```
 
-2. **Set up local environment** (creates virtual environment and runs CI tests):
-   ```bash
-   chmod +x setup_local_env.sh
-   ./setup_local_env.sh
-   ```
-
-### Manual Setup
-
-1. **Create virtual environment**:
+2. **Set up environment**:
    ```bash
    python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
+   make install-dev  # Installs all dependencies including dev tools
    ```
 
-2. **Install dependencies**:
-   ```bash
-   make install
-   # or manually:
-   pip install -r requirements.txt
-   ```
-
-3. **Run tests**:
+3. **Verify setup**:
    ```bash
    make test
+   make lint
    ```
 
-4. **Generate simulation GIF**:
+4. **Generate simulation visualization**:
    ```bash
    make generate-gif
    ```
