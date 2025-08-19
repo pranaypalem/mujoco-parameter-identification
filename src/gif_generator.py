@@ -140,14 +140,35 @@ def run_simulation_and_generate_gif(
 
     print(f"Simulation complete. Captured {len(frames)} frames.")
 
-    # Generate GIF
-    gif_path = output_path / filename
-    print(f"Generating GIF: {gif_path}")
-
-    media.write_video(str(gif_path), frames, fps=framerate)
-
-    print(f"GIF generated successfully: {gif_path}")
-    return gif_path
+    # Generate animation file
+    if filename.endswith('.gif'):
+        # For GIF, create MP4 first then convert
+        mp4_path = output_path / filename.replace('.gif', '.mp4')
+        gif_path = output_path / filename
+        
+        print(f"Creating MP4: {mp4_path}")
+        media.write_video(str(mp4_path), frames, fps=framerate)
+        
+        print(f"Converting to GIF: {gif_path}")
+        import subprocess
+        try:
+            subprocess.run([
+                'ffmpeg', '-i', str(mp4_path), '-vf', 
+                f'fps=10,scale=320:-1:flags=lanczos', '-y', str(gif_path)
+            ], check=True, capture_output=True)
+            
+            print(f"GIF generated successfully: {gif_path}")
+            return gif_path
+        except subprocess.CalledProcessError as e:
+            print(f"GIF conversion failed, keeping MP4: {mp4_path}")
+            return mp4_path
+    else:
+        # Direct video creation
+        video_path = output_path / filename
+        print(f"Generating video: {video_path}")
+        media.write_video(str(video_path), frames, fps=framerate)
+        print(f"Video generated successfully: {video_path}")
+        return video_path
 
 
 def main():
