@@ -53,7 +53,7 @@ test:
 # Test with coverage
 .PHONY: test-coverage
 test-coverage:
-	pytest tests/ -v --cov=$(SRC_DIR) --cov-report=html
+	pytest tests/ -v --cov=$(SRC_DIR) --cov-report=html --cov-report=xml
 	@echo "Testing with coverage completed"
 
 # Run notebooks
