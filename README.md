@@ -1,8 +1,12 @@
-![image](https://github.com/user-attachments/assets/806d3ac0-e470-464b-bbc2-e646adb40092)
+# MuJoCo Parameter Identification
 
-# Project Title
+[![CI](https://github.com/pranaypalem/mujoco-parameter-identification/workflows/CI/badge.svg)](https://github.com/pranaypalem/mujoco-parameter-identification/actions)
+[![codecov](https://codecov.io/gh/pranaypalem/mujoco-parameter-identification/branch/main/graph/badge.svg)](https://codecov.io/gh/pranaypalem/mujoco-parameter-identification)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-Parameter Identification with MuJoCo Simulations
+**Parameter identification for material properties using MuJoCo simulations and optimization techniques.**
+
+This project identifies stiffness and damping characteristics of cardstock material by comparing real-world oscillation data with MuJoCo physics simulations, using scipy optimization to minimize the difference between experimental and simulated results.
 
 ## Overview
 
@@ -57,29 +61,108 @@ The project demonstrated:
 - Accurate estimation of stiffness and damping parameters for the cardstock material.
 - Validation of MuJoCo's effectiveness in replicating real-world oscillatory behavior.
 
+## Key Features
+
+- **Material Parameter Identification**: Automatically determines stiffness and damping parameters
+- **MuJoCo Integration**: Uses advanced physics simulation for accurate modeling  
+- **Optimization Pipeline**: Scipy-based parameter fitting with MSE minimization
+- **Visualization**: Generate GIFs and plots of simulation results
+- **Robust Testing**: Comprehensive test suite with CI/CD integration
+- **Easy Setup**: One-command local environment setup
+
 ## Prerequisites
 
-To use this repository, ensure the following tools are installed:
-- [Tracker Software](https://physlets.org/tracker/)
-- MuJoCo (with a valid license)
-- Python (3.8 or higher)
-- Required Python libraries: numpy, pandas, matplotlib, scipy
+- Python 3.8 or higher
+- [Tracker Software](https://physlets.org/tracker/) (for experimental data collection)
+- MuJoCo physics engine
 
-## How to Run
+## Repository Structure
 
-1. **Install Tracker Software** and analyze your video to generate CSV data.
-2. **Clone this Repository**:
+```
+├── data/                     # Experimental data files
+├── notebooks/               # Jupyter notebooks for analysis
+├── src/                     # Python source code
+│   ├── gif_generator.py     # GIF generation from simulations
+│   └── parameter_identification.py  # Core parameter identification
+├── tests/                   # Unit tests
+├── media/                   # Generated media files (GIFs, videos)
+├── results/                 # Analysis results
+├── Makefile                 # Build and test automation
+└── requirements.txt         # Python dependencies
+```
+
+## Quick Start
+
+### Local Development Setup
+
+1. **Clone this repository**:
    ```bash
    git clone https://github.com/pranaypalem/mujoco-parameter-identification.git
+   cd mujoco-parameter-identification
    ```
-3. **Run Simulations**: Use the provided scripts to generate MuJoCo data.
-4. **Optimize Parameters**: Use the optimization scripts to refine stiffness and damping values.
-5. **Compare Data**: Utilize the provided Jupyter Notebooks to visualize and analyze differences.
+
+2. **Set up local environment** (creates virtual environment and runs CI tests):
+   ```bash
+   chmod +x setup_local_env.sh
+   ./setup_local_env.sh
+   ```
+
+### Manual Setup
+
+1. **Create virtual environment**:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   make install
+   # or manually:
+   pip install -r requirements.txt
+   ```
+
+3. **Run tests**:
+   ```bash
+   make test
+   ```
+
+4. **Generate simulation GIF**:
+   ```bash
+   make generate-gif
+   ```
+
+### Available Make Commands
+
+| Command | Description |
+|---------|-------------|
+| `make help` | Show all available commands |
+| `make install` | Install dependencies |
+| `make test` | Run unit tests |
+| `make lint` | Run code linting |
+| `make format` | Format code with black and isort |
+| `make generate-gif` | Generate GIF from MuJoCo simulation |
+| `make clean` | Clean temporary files |
+
+## Results
+
+The optimization process successfully identifies:
+- **Stiffness parameters (k)** with high accuracy
+- **Damping coefficients (b)** for material characterization  
+- **Mean square error** minimization between experimental and simulated data
+- **Visual validation** through comparative plots and animations
+
+## Research Applications
+
+This methodology can be extended to:
+- Various material types (plastics, metals, composites)
+- Different loading conditions and geometries
+- Multi-parameter optimization problems
+- Real-time parameter estimation systems
 
 ## Acknowledgments
 
-- The Tracker development team for their open-source tool.
-- MuJoCo for providing a powerful simulation framework.
-- Contributors and reviewers for their support.
+- Tracker development team for the open-source motion analysis tool
+- MuJoCo team for the advanced physics simulation framework
 
 
